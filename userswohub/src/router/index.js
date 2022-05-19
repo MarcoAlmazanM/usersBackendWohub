@@ -13,14 +13,7 @@ const routes = [
       authRequired: true,
     },
   },
-  {
-    path: '/courses',
-    name: 'Courses',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "Courses" */ '../views/Courses.vue')
-  },
+
   {
     path: '/login',
     name: 'LogIn',
@@ -30,11 +23,6 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: () => import(/* webpackChunkName: "Register" */ '../views/Register.vue')
-  },
-  {
-    path: '/resume',
-    name: 'Resume',
-    component: () => import(/* webpackChunkName: "Resume" */ '../views/Resume.vue')
   },
   {
     path: '/home',
@@ -49,16 +37,6 @@ const routes = [
     name: 'SurveyView',
     component: ()=> import(/* webpackChunkName: "SurveyView" */ '../views/SurveyView.vue')
   },
-  {
-    path: '/personal',
-    name: 'PersonalScreen',
-    component: ()=> import(/* webpackChunkName: "PersonalScreen" */ '../views/PersonalScreen.vue')
-  },
-  {
-    path: '/careerawards',
-    name: 'CareerAwardsView',
-    component: ()=> import(/* webpackChunkName: "CareerAwardsView" */ '../views/CareerAwardsView.vue')
-  }
 ]
 
 const router = new VueRouter({
