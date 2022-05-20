@@ -6,7 +6,7 @@
         <v-form v-model="isFormValid">
           <v-select :items="athletic_level" v-model="level" @change="athl" label="Nivel Atlético" :disabled="edit_mode == 0" :rules="[rules.required]" solo> </v-select>
           <v-select :items="favorite_exercise" v-model="favorite" @change="fav" label="Tipo de Ejercicio Favorito" :disabled="edit_mode == 0" :rules="[rules.required]" solo></v-select>
-          <v-select :items="improvements" v-model="improvement" @change="imp" label="¿Qué buscas mejorar?" :disabled="edit_mode == 0"  :rules="[rules.required]"solo></v-select>
+          <v-select :items="improvements" v-model="improvement" @change="imp" label="¿Qué buscas mejorar?" :disabled="edit_mode == 0"  :rules="[rules.required]" solo></v-select>
           <v-select :items="exercise_location" v-model="location" @change="loc" label="¿Dónde haces ejercicio?" :disabled="edit_mode == 0" :rules="[rules.required]" solo></v-select>
           <v-select :items="available_time" v-model="time" @change="tim" label="Tiempo disponible para hacer ejercicio" :disabled="edit_mode == 0" :rules="[rules.required]" solo></v-select>
           <v-text-field label="Deportes de interés (enlistalos) " v-model="sports_interests" :disabled="edit_mode == 0" :rules="[rules.required]" solo></v-text-field>
