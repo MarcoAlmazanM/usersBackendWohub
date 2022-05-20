@@ -3,13 +3,15 @@
     <v-row dense align="center" justify="center" class="fill-height">
       <v-col cols="8">
         <p class="blueTec--text text-center text-h4 font-weight-bold">Interests</p>
-        <v-select :items="athletic_level" v-model="level" @change="athl" label="Nivel Atlético" :disabled="edit_mode == 0" solo> </v-select>
-        <v-select :items="favorite_exercise" v-model="favorite" @change="fav" label="Tipo de Ejercicio Favorito" :disabled="edit_mode == 0" solo></v-select>
-        <v-select :items="improvements" v-model="improvement" @change="imp" label="¿Qué buscas mejorar?" :disabled="edit_mode == 0" solo></v-select>
-        <v-select :items="exercise_location" v-model="location" @change="loc" label="¿Dónde haces ejercicio?" :disabled="edit_mode == 0" solo></v-select>
-        <v-select :items="available_time" v-model="time" @change="tim" label="Tiempo disponible para hacer ejercicio" :disabled="edit_mode == 0" solo></v-select>
-        <v-text-field label="Deportes de interés (enlistalos) " v-model="sports_interests" :disabled="edit_mode == 0" solo></v-text-field>
-        <v-btn block color="blueTec" class="whiteTec--text" @click="setInterests" v-model="buttonAction">{{ buttonAction }}</v-btn>
+        <v-form v-model="isFormValid">
+          <v-select :items="athletic_level" v-model="level" @change="athl" label="Nivel Atlético" :disabled="edit_mode == 0" :rules="[rules.required]" solo> </v-select>
+          <v-select :items="favorite_exercise" v-model="favorite" @change="fav" label="Tipo de Ejercicio Favorito" :disabled="edit_mode == 0" :rules="[rules.required]" solo></v-select>
+          <v-select :items="improvements" v-model="improvement" @change="imp" label="¿Qué buscas mejorar?" :disabled="edit_mode == 0"  :rules="[rules.required]"solo></v-select>
+          <v-select :items="exercise_location" v-model="location" @change="loc" label="¿Dónde haces ejercicio?" :disabled="edit_mode == 0" :rules="[rules.required]" solo></v-select>
+          <v-select :items="available_time" v-model="time" @change="tim" label="Tiempo disponible para hacer ejercicio" :disabled="edit_mode == 0" :rules="[rules.required]" solo></v-select>
+          <v-text-field label="Deportes de interés (enlistalos) " v-model="sports_interests" :disabled="edit_mode == 0" :rules="[rules.required]" solo></v-text-field>
+        </v-form>
+        <v-btn block color="blueTec" class="whiteTec--text" @click="setInterests" v-model="buttonAction" :disabled="!isFormValid">{{ buttonAction }}</v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -21,22 +23,27 @@ import 'firebase/storage';
 
   export default {
     name: "Interests",
-    data: () => ({
-      athletic_level: ['Principiante', 'Intermedio', 'Avanzado'],
-      favorite_exercise: ['Natación', 'Correr', 'Ciclismo'],
-      improvements: ['Mejorar salud en general', 'Perder peso', 'Ganar musculatura'],
-      exercise_location: ['Casa', 'Oficina', 'Gimnasio'],
-      available_time: ['30 minutos', '1 hora', '2 horas'],
-      level: '',
-      favorite: '',
-      improvement: '',
-      location: '',
-      time: '',
-      sports_interests:'',
-      edit_mode: 0,
-      buttonAction: "Actualizar Intereses",
-    }
-    ),
+    data() {
+      return {
+        athletic_level: ['Principiante', 'Intermedio', 'Avanzado'],
+        favorite_exercise: ['Natación', 'Correr', 'Ciclismo'],
+        improvements: ['Mejorar salud en general', 'Perder peso', 'Ganar musculatura'],
+        exercise_location: ['Casa', 'Oficina', 'Gimnasio'],
+        available_time: ['30 minutos', '1 hora', '2 horas'],
+        level: '',
+        favorite: '',
+        improvement: '',
+        location: '',
+        time: '',
+        sports_interests:'',
+        edit_mode: 0,
+        buttonAction: "Actualizar Intereses",
+        isFormValid:false,
+        rules: {
+          required: value => !!value || 'Field Required',
+        }
+      }
+    },
     mounted() {
       this.getInterests();
     },

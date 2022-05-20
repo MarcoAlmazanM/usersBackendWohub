@@ -4,12 +4,12 @@
       <v-col cols="8">
         <p class="blueTec--text text-center text-h4 font-weight-bold">Interests survey</p>
         <v-form v-model="isFormValid">
-          <v-select :items="athletic_level" @change="athl" label="Nivel Atlético" :rules="rules.required" solo> </v-select>
-          <v-select :items="favorite_exercise" @change="fav" label="Tipo de Ejercicio Favorito" :rules="rules.required" solo></v-select>
-          <v-select :items="improvements" @change="imp" label="¿Qué buscas mejorar?" :rules="rules.required" solo></v-select>
-          <v-select :items="exercise_location" @change="loc" label="¿Dónde haces ejercicio?" :rules="rules.required" solo></v-select>
-          <v-select :items="available_time" @change="tim" label="Tiempo disponible para hacer ejercicio" :rules="rules.required" solo></v-select>
-          <v-text-field label="Deportes de interés (enlistalos) " v-model="sports_interests" :rules="rules.required" solo></v-text-field>
+          <v-select :items="athletic_level" @change="athl" label="Nivel Atlético" :rules="[rules.required]" solo> </v-select>
+          <v-select :items="favorite_exercise" @change="fav" label="Tipo de Ejercicio Favorito" :rules="[rules.required]" solo></v-select>
+          <v-select :items="improvements" @change="imp" label="¿Qué buscas mejorar?" :rules="[rules.required]" solo></v-select>
+          <v-select :items="exercise_location" @change="loc" label="¿Dónde haces ejercicio?" :rules="[rules.required]" solo></v-select>
+          <v-select :items="available_time" @change="tim" label="Tiempo disponible para hacer ejercicio" :rules="[rules.required]" solo></v-select>
+          <v-text-field label="Deportes de interés (enlistalos) " v-model="sports_interests" :rules="[rules.required]" solo></v-text-field>
         </v-form>
         <v-btn block color="blueTec" class="whiteTec--text" @click="setInterests" :disabled="!isFormValid">Actualizar intereses</v-btn>
       </v-col>
