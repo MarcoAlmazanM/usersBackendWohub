@@ -4,7 +4,7 @@
       <v-col cols="8">
         <p class="blueTec--text text-center text-h4 font-weight-bold">Crea una Cuenta</p>
         <v-form v-model="isFormValid">
-          <v-text-field label="Name" placeholder="Complete Name" type="text"  v-model="name" :rules="rules.required" outlined dense></v-text-field>
+          <v-text-field label="Name" placeholder="Complete Name" type="text"  v-model="name" :rules="[rules.required]" outlined dense></v-text-field>
           <v-text-field label="Email" placeholder="ejemplo@wohub.com" type="text"  v-model="email" :rules="[rules.required,rules.email]" outlined dense></v-text-field>
           <v-text-field label="Username" placeholder="user_wohub" type="text"  v-model="username" :rules="[rules.required,rules.username]" outlined dense></v-text-field>
           <v-text-field label="Phone" placeholder="5512345678" type="text"  v-model="phone" :rules="[rules.required,rules.length(10)]" outlined dense></v-text-field>
