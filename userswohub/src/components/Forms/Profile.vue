@@ -1,8 +1,5 @@
 <template>
-  <v-col  justify="center" justify-md="start">
-    <p class="blueTec--text text-md-start text-center text-h6">{{ title }}</p>
-    <p class="grayTec--text text-md-start  text-center text-h6">{{ info }}</p>
-  </v-col>
+    <p class="grayTec--text text-md-start text-center text-h6">{{ title }} {{ info }}</p>
 </template>
 
 <script>

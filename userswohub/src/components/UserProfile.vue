@@ -9,7 +9,7 @@
       </div>
 
       <v-row align="center" justify="center" justify-md="start" >
-        <v-col  cols="12" md="4" sm="10" class="pa-md-2 mb-1" offset-md="2" offset-sm="2"  v-for="(label, index) in profileInformationHeaderList" :key="index">
+        <v-col  cols="4" md="8" sm="10" class="pa-md-2 mb-1"  justify="center" justify-md="start" v-for="(label, index) in profileInformationHeaderList" :key="index">
           <Profile :title="label" :info="userInfo[index]"></Profile>
         </v-col>
       </v-row>
@@ -30,36 +30,38 @@ export default {
   data() {
     return {
       profileInformationHeaderList: [
-        'Nombre completo',
-        'Matrícula',
-        'Correo Institucional',
-        'Carrera',
-        'Correo Personal',
+        '',
+        'Following: ',
+        'Groups: ',
+        'Miembro desde: ',
+        'Tipo de cuenta: ',
       ],
       userInfo: []
     }
   },
   mounted() {
-    let user=this.getUser();
     //let user=result.toString().charAt(0).toUpperCase()+result.slice(1);
-    this.getStudentsInfo(user);
+    this.getUserInfo(this.getUser());
   },
   methods: {
-    async getStudentsInfo(user) {
+    async getUserInfo(user) {
 
-      const student = await firebase.firestore().collection("users").doc(user.uid).get();
-      const carrera="ITC"
+      const student = await firebase.firestore().collection("Users").doc(user).get();
+      let studentData = student.data();
+
       this.userInfo.push(student.data().name);
-      this.userInfo.push(student.data().id);
-      this.userInfo.push(user.email);
-      //this.userInfo.push(student.data().Carrera);
-      this.userInfo.push(carrera);
-      this.userInfo.push(student.data().personal);
+      this.userInfo.push(student.data().following_number);
+      this.userInfo.push(student.data().groups_number);
+      this.userInfo.push( new Date(student.data().member_since.seconds * 1000).toLocaleDateString());
+      this.userInfo.push(student.data().account_type);
+
+
+      console.log(studentData);
     },
     getUser(){
-      //console.log(firebase.auth().currentUser);
-      return firebase.auth().currentUser;
-    }
+        let userEmail = firebase.auth().currentUser.email;
+        return userEmail;
+    },
   }
 }
 </script>
