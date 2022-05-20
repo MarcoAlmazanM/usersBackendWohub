@@ -21,6 +21,14 @@ Marco Antonio Almazán Martínez A01769046
         </v-list-item>
         <v-list-item >
           <v-list-item-icon>
+            <v-icon class="whiteTec--text">mdi-dumbbell</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <router-link  to="/careerawards" style="text-decoration: none; "><v-list-item-title class="whiteTec--text text-body-1 ">Training</v-list-item-title></router-link>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item >
+          <v-list-item-icon>
             <v-icon class="whiteTec--text">mdi-cog</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
