@@ -5,7 +5,7 @@ Marco Antonio Almazán Martínez A01769046
   <v-app>
 
     <PrincipalNavBar v-if="!log"></PrincipalNavBar>
-    <Settings v-if="this.$route.path == '/goals' || this.$route.path == '/personal'|| this.$route.path == '/resume'"></Settings>
+    <Settings v-if="this.$route.path == '/goals' || this.$route.path == '/personalinfo'|| this.$route.path == '/resume'"></Settings>
 
     <v-navigation-drawer permanent app color="blueTec" v-if="log">
       <v-list dense>
@@ -24,7 +24,7 @@ Marco Antonio Almazán Martínez A01769046
             <v-icon class="whiteTec--text">mdi-cog</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <router-link  to="/personal" style="text-decoration: none; "><v-list-item-title class="whiteTec--text text-body-1 ">Settings</v-list-item-title></router-link>
+            <router-link  to="/personalinfo" style="text-decoration: none; "><v-list-item-title class="whiteTec--text text-body-1 ">Settings</v-list-item-title></router-link>
           </v-list-item-content>
         </v-list-item>
         <v-list-item @click="logout">
